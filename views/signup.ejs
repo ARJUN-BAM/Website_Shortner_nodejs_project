@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        form {
+            width: 300px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        button {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: #ff0000;
+            text-align: center;
+        }
+
+        #loginButton {
+            display: block;
+            width: 340px;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        #loginButton:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+    <title>Signup Page</title>
+</head>
+<body>
+    <h1>Signup</h1>
+    <form method="post" action="/home/signup">
+        <p>Name:</p>
+        <input type="text" name="name" placeholder="Enter your name">
+        <p>Email:</p>
+        <input type="email" name="email" placeholder="Enter your email">
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Enter your password">
+        <button type="submit">Sign Up</button>
+    </form>
+    <p class="error-message">
+        <% if (locals.error) { %>
+            <%= locals.error %>
+        <% } %>
+    </p>
+    <button id="loginButton">Log In</button>
+
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function() {
+            window.location.href = "/home/login";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      color: #333;
+      margin: 30px;
+      padding: 0;
+    }
+
+    h1 {
+      color: #007bff;
+      padding-left: 40%;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+      padding: 10px;
+      width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+
+    button[type="submit"],
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .result {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      margin-top: 20px;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+
+    #loginbutton,
+    #removeCookieButton,
+    #Signbutton {
+      margin-right: 10px;
+      width: 100px;
+    }
+  </style>
+  <title>Home Page</title>
+</head>
+
+<body>
+  <div>
+    <h1>URL Shortener</h1>
+    <form method="post" action="/home">
+      <p>Enter your URL:</p>
+      <input type="text" name="url" placeholder="https://example.com" />
+      <button type="submit">Generate</button>
+    </form>
+    <p class="result">
+      <% if (locals.shorturl) { %> Shortened URL:
+        <span class="res-text"> http://localhost:8002/url/<%= locals.shorturl %>
+            <% } %></span>
+    </p>
+  
+
+  </div>
+  <table>
+    <thead>
+      <th> s.no </th>
+      <th> URL </th>
+      <th> Redirect </th>
+      <th> Clicks </th>
+    </thead>
+    <tbody>
+      <% if (urls && Array.isArray(urls)) { %>
+        <% urls.forEach((url, index)=> { %>
+          <tr>
+            <td>
+              <%= index + 1 %>
+            </td>
+            <td>
+              <%= url.url %>
+            </td>
+            <td>
+              <%= url.shorturl %>
+            </td>
+            <td>
+              <%= url.totalclicks.length %>
+            </td>
+          </tr>
+          <% }) %>
+            <% } %>
+    </tbody>
+  </table>
+  <p> <% if (locals.error) { %>
+   <%= locals.error %>
+  <% } %></p>
+  <p><button id="loginbutton">Log in</button></p>
+  <p><button id="removeCookieButton">Log out</button></p>
+  <p><button id="Signbutton">Sign In</button></p>
+  <script>
+    document.getElementById("loginbutton").addEventListener("click", function () {
+      window.location.href = "/home/login";
+    });
+    document.getElementById("removeCookieButton").addEventListener("click", function () {
+      document.cookie = "userID=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      window.location.href = "/home";
+    });
+    document.getElementById("Signbutton").addEventListener("click", function () {
+      window.location.href = "/home/signup";
+    });
+  </script>
+</body>
+
+</html>
