@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));  
 
 
-
+//this is git connecting
 
 connecttoDB();
 app.use(express.json());
