@@ -9,6 +9,7 @@ app.use(cookieParser());
 app.set("view engine", "ejs");
 app.set("views", path.resolve("./views"));  
 
+//Is comment is added??
 
 //this is git connecting
 //this is git connecting
