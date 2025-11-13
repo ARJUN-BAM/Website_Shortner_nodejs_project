@@ -7,7 +7,7 @@ const homeRoute = require("./routes/home");
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 app.set("view engine", "ejs");
-app.set("views", path.resolve("./views"));  
+app.set("views", path.resolve("./views"));
 
 //Is comment is added??
 //nothign's changed
@@ -27,3 +27,5 @@ app.listen(8002, (err) => {
     }
     console.log("server has started!!");
 })
+
+// this is a comment on 13 / 11 / 2025
